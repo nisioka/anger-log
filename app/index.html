@@ -2,13 +2,66 @@
 <html lang="en" ng-app='App'>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    <title>Anger Log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.css"> <!--TODO: 本番ではmin版とする。-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.js"></script> <!--TODO: 本番ではmin版とする。-->
     <script type="text/javascript" src="js/controller.js"></script>
 </head>
-<body ng-controller="AppController">
+<body ng-controller="AppController" class="container">
 <div ng-repeat="comment in comments">
     <h2>{{comment.name}} : {{comment.text}}</h2>
 </div>
+<div>
+
+    <div>
+
+    <h1>登録フォーム</h1>
+
+    <form ng-submit="submit()">
+
+    <div class="form-group">
+
+    <label for="username">ユーザー名</label>
+
+    <input type="text" class="form-control" id="username" placeholder="twitterのユーザー名を入力" ng-model="username">
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">登録</button>
+
+    </form>
+
+    </div>
+
+    <hr>
+
+    <div>
+
+    <h1>ユーザー一覧</h1>
+
+        <ul>
+
+        <!-- 繰り返したいタグに対してng-repeatを使う -->
+
+        <li style="padding: 5px" ng-repeat="user in users">
+
+        <div>
+
+        <!-- ng-repeat内のuserをタグで囲まれた範囲内で使うことができます -->
+
+        <a href="{{user.url}}" target="_blank">{{user.username}}</a>
+
+        </div>
+
+        </li>
+
+        </ul>
+
+    </div>
+
+    </div>
 </body>
 </html>
