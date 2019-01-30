@@ -11,57 +11,55 @@
     <script type="text/javascript" src="js/controller.js"></script>
 </head>
 <body ng-controller="AppController" class="container">
-<div ng-repeat="comment in comments">
-    <h2>{{comment.name}} : {{comment.text}}</h2>
-</div>
 <div>
 
     <div>
+        <h1>登録</h1>
+        <form ng-submit="submit()">
+            <div class="form-group">
+                <label for="date">日時</label>
+                <input type="text" class="form-control" id="date" ng-model="date">
+                <input type="text" class="form-control" id="time" ng-model="time">
 
-    <h1>登録フォーム</h1>
+                <label for="title">タイトル</label>
+                <input type="text" class="form-control" id="title" ng-model="title">
 
-    <form ng-submit="submit()">
+                <label for="case">出来事</label>
+                <input type="text" class="form-control" id="case" ng-model="case">
 
-    <div class="form-group">
+                <label for="think">思った事</label>
+                <input type="text" class="form-control" id="think" ng-model="think">
 
-    <label for="username">ユーザー名</label>
+                <label for="emotion">感情</label>
+                <input type="text" class="form-control" id="emotion" ng-model="emotion">
 
-    <input type="text" class="form-control" id="username" placeholder="twitterのユーザー名を入力" ng-model="username">
+                <label for="strength">感情の強さ</label>
+                <input type="text" class="form-control" id="strength" ng-model="strength">
 
-    </div>
+                <label for="action">行動</label>
+                <input type="text" class="form-control" id="action" ng-model="action">
 
-    <button type="submit" class="btn btn-primary">登録</button>
-
-    </form>
-
+                <label for="result">結果</label>
+                <input type="text" class="form-control" id="result" ng-model="result">
+            </div>
+            <button type="submit" class="btn btn-primary">登録</button>
+        </form>
     </div>
 
     <hr>
 
     <div>
-
-    <h1>ユーザー一覧</h1>
-
+        <h1>ログ一覧</h1>
         <ul>
-
-        <!-- 繰り返したいタグに対してng-repeatを使う -->
-
-        <li style="padding: 5px" ng-repeat="user in users">
-
-        <div>
-
-        <!-- ng-repeat内のuserをタグで囲まれた範囲内で使うことができます -->
-
-        <a href="{{user.url}}" target="_blank">{{user.username}}</a>
-
-        </div>
-
-        </li>
-
+            <!-- 繰り返したいタグに対してng-repeatを使う -->
+            <li style="padding: 5px" ng-repeat="user in users">
+                <div>
+                    <!-- ng-repeat内のuserをタグで囲まれた範囲内で使うことができます -->
+                    <span>{{user.date}} {{user.time}}</span><span>{{user.title}}</span>
+                </div>
+            </li>
         </ul>
-
     </div>
-
-    </div>
+</div>
 </body>
 </html>
