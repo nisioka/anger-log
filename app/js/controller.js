@@ -1,6 +1,6 @@
-var app = angular.module('App', []);
+var app = angular.module('App', ['ngStorage']);
 
-app.controller('AppController', function($scope){
+app.controller('AppController', ['$scope', '$localStorage', function ($scope, $localStorage) {
     $scope.date = '';
     $scope.time = '';
     $scope.title = '';
@@ -11,12 +11,17 @@ app.controller('AppController', function($scope){
     $scope.action = '';
     $scope.result = '';
 
-    $scope.users = [];
+    $scope.$storage = $localStorage.$default({
+        logs: []
+    });
+
+    $scope.logs = $scope.$storage.logs;
     $scope.submit = function () {
-        $scope.users.push({
+        $scope.logs.push({
             date: $scope.date,
             time: $scope.time,
             title: $scope.title
         });
+        $scope.$storage.logs = $scope.logs;
     };
-});
+}]);

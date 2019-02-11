@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.css"> <!--TODO: 本番ではmin版とする。-->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.js"></script> <!--TODO: 本番ではmin版とする。-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
     <script type="text/javascript" src="js/controller.js"></script>
 </head>
 <body ng-controller="AppController" class="container">
@@ -52,14 +53,15 @@
         <h1>ログ一覧</h1>
         <ul>
             <!-- 繰り返したいタグに対してng-repeatを使う -->
-            <li style="padding: 5px" ng-repeat="user in users">
+            <li style="padding: 5px" ng-repeat="log in logs">
                 <div>
                     <!-- ng-repeat内のuserをタグで囲まれた範囲内で使うことができます -->
-                    <span>{{user.date}} {{user.time}}</span><span>{{user.title}}</span>
+                    <span>{{log.date}} {{log.time}}</span><span>{{log.title}}</span>
                 </div>
             </li>
         </ul>
     </div>
 </div>
+<span>ver.0.1.0</span>
 </body>
 </html>
