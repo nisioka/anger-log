@@ -51,15 +51,24 @@
 
     <div>
         <h1>ログ一覧</h1>
-        <ul>
+        <table border="1px" class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>日時</th><th>タイトル</th><th>出来事</th><th>思った事</th><th>感情</th><th>感情の強さ</th><th>行動</th><th>結果</th>
+                </tr>
+            </thead>
             <!-- 繰り返したいタグに対してng-repeatを使う -->
-            <li style="padding: 5px" ng-repeat="log in logs">
-                <div>
-                    <!-- ng-repeat内のuserをタグで囲まれた範囲内で使うことができます -->
-                    <span>{{log.date}} {{log.time}}</span><span>{{log.title}}</span>
-                </div>
-            </li>
-        </ul>
+            <tr ng-repeat="log in logs">
+                <td>{{log.date}}&nbsp;{{log.time}}</td>
+                <td>{{log.title}}</td>
+                <td>{{log.case}}</td>
+                <td>{{log.think}}</td>
+                <td>{{log.emotion}}</td>
+                <td>{{log.strength}}</td>
+                <td>{{log.action}}</td>
+                <td>{{log.result}}</td>
+            </tr>
+        </table>
     </div>
 </div>
 <span>ver.0.1.0</span>
