@@ -2,75 +2,106 @@
 <html lang="en" ng-app='App'>
 <head>
     <meta charset="UTF-8">
-    <title>Anger Log</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Anger Log</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.css"> <!--TODO: 本番ではmin版とする。-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.js"></script> <!--TODO: 本番ではmin版とする。-->
     <script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
     <script type="text/javascript" src="js/controller.js"></script>
 </head>
 <body ng-controller="AppController" class="container">
-<div>
+<div class="p-3">
+    <h1>💢アンガーログ～怒りの記録をつける～</h1>
 
-    <div>
-        <h1>登録</h1>
-        <form ng-submit="submit()">
-            <div class="form-group">
-                <label for="date">日時</label>
-                <input type="text" class="form-control" id="date" ng-model="date">
-                <input type="text" class="form-control" id="time" ng-model="time">
+    <!-- タブボタン部分 -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a href="#tab1" class="nav-link active" data-toggle="tab">アンガーログ登録</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tab2" class="nav-link" data-toggle="tab">アンガーログ一覧</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tab3" class="nav-link" data-toggle="tab">説明</a>
+        </li>
+    </ul>
+    <!--タブのコンテンツ部分-->
+    <div class="tab-content p-3">
+        <div id="tab1" class="tab-pane active">
+            <h2>登録</h2>
+            <form ng-submit="submit()">
+                <div class="form-group">
+                    <label for="date">日時</label>
+                    <input type="text" class="form-control" id="date" ng-model="date">
+                    <input type="text" class="form-control" id="time" ng-model="time">
 
-                <label for="title">タイトル</label>
-                <input type="text" class="form-control" id="title" ng-model="title">
+                    <label for="title">タイトル</label>
+                    <input type="text" class="form-control" id="title" ng-model="title">
 
-                <label for="case">出来事</label>
-                <input type="text" class="form-control" id="case" ng-model="case">
+                    <label for="case">出来事</label>
+                    <input type="text" class="form-control" id="case" ng-model="case">
 
-                <label for="think">思った事</label>
-                <input type="text" class="form-control" id="think" ng-model="think">
+                    <label for="think">思った事</label>
+                    <input type="text" class="form-control" id="think" ng-model="think">
 
-                <label for="emotion">感情</label>
-                <input type="text" class="form-control" id="emotion" ng-model="emotion">
+                    <label for="emotion">感情</label>
+                    <input type="text" class="form-control" id="emotion" ng-model="emotion">
 
-                <label for="strength">感情の強さ</label>
-                <input type="text" class="form-control" id="strength" ng-model="strength">
+                    <label for="strength">感情の強さ</label>
+                    <input type="text" class="form-control" id="strength" ng-model="strength">
 
-                <label for="action">行動</label>
-                <input type="text" class="form-control" id="action" ng-model="action">
+                    <label for="action">行動</label>
+                    <input type="text" class="form-control" id="action" ng-model="action">
 
-                <label for="result">結果</label>
-                <input type="text" class="form-control" id="result" ng-model="result">
-            </div>
-            <button type="submit" class="btn btn-primary">登録</button>
-        </form>
-    </div>
+                    <label for="result">結果</label>
+                    <input type="text" class="form-control" id="result" ng-model="result">
+                </div>
+                <button type="submit" class="btn btn-primary">登録</button>
+            </form>
+        </div>
 
-    <hr>
-
-    <div>
-        <h1>ログ一覧</h1>
-        <table border="1px" class="table table-striped">
-            <thead class="thead-dark">
+        <div id="tab2" class="tab-pane p-3">
+            <h2>ログ一覧</h2>
+            <table border="1px" class="table table-striped">
+                <thead class="thead-dark">
                 <tr>
-                    <th>日時</th><th>タイトル</th><th>出来事</th><th>思った事</th><th>感情</th><th>感情の強さ</th><th>行動</th><th>結果</th>
+                    <th>日時</th>
+                    <th>タイトル</th>
+                    <th>出来事</th>
+                    <th>思った事</th>
+                    <th>感情</th>
+                    <th>感情の強さ</th>
+                    <th>行動</th>
+                    <th>結果</th>
                 </tr>
-            </thead>
-            <!-- 繰り返したいタグに対してng-repeatを使う -->
-            <tr ng-repeat="log in logs">
-                <td>{{log.date}}&nbsp;{{log.time}}</td>
-                <td>{{log.title}}</td>
-                <td>{{log.case}}</td>
-                <td>{{log.think}}</td>
-                <td>{{log.emotion}}</td>
-                <td>{{log.strength}}</td>
-                <td>{{log.action}}</td>
-                <td>{{log.result}}</td>
-            </tr>
-        </table>
+                </thead>
+                <!-- 繰り返したいタグに対してng-repeatを使う -->
+                <tr ng-repeat="log in logs">
+                    <td>{{log.date}}&nbsp;{{log.time}}</td>
+                    <td>{{log.title}}</td>
+                    <td>{{log.case}}</td>
+                    <td>{{log.think}}</td>
+                    <td>{{log.emotion}}</td>
+                    <td>{{log.strength}}</td>
+                    <td>{{log.action}}</td>
+                    <td>{{log.result}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="tab3" class="tab-pane p-3">
+            <h2>説明</h2>
+        </div>
     </div>
 </div>
-<span>ver.0.1.0</span>
+<div style="text-align: right"><span>ver.0.1.1</span></div>
 </body>
 </html>
