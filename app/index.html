@@ -19,7 +19,7 @@
 </head>
 <body ng-controller="AppController" class="container">
 <div class="p-3">
-    <h1>💢アンガーログ～怒りの記録をつける～</h1>
+    <h1>💢アンガーログ</h1>
 
     <!-- タブボタン部分 -->
     <ul class="nav nav-tabs">
@@ -35,8 +35,9 @@
     </ul>
     <!--タブのコンテンツ部分-->
     <div class="tab-content p-3">
-        <div id="tab1" class="tab-pane active">
+        <div id="tab1" class="tab-pane active p-3">
             <h2>登録</h2>
+            <hr/>
             <form ng-submit="submit()">
                 <div class="form-group">
                     <label for="date">日時</label>
@@ -70,6 +71,7 @@
 
         <div id="tab2" class="tab-pane p-3">
             <h2>ログ一覧</h2>
+            <hr/>
             <table border="1px" class="table table-striped">
                 <thead class="thead-dark">
                 <tr>
@@ -99,6 +101,37 @@
 
         <div id="tab3" class="tab-pane p-3">
             <h2>説明</h2>
+            <hr/>
+            <h3>アンガーログとは？</h3>
+            <p>
+                アンガーログとは、<a href="#descriptionAngerManagement">アンガーマネジメント(下記参照)</a>における怒りをコントロールする技術の一つの手段です。<br/>
+                怒りを生み出してしまう仕組みを修正するために、まず自分自身の怒りというものを客観的に知るツールとして日々の怒りをこのアンガーログとして記録します。
+                これによって、自分が物事をどのように認識しているのか、どのように怒りを感じているのか、どのように行動したのかを分析することが出来るようになります。
+            </p>
+            <h3>アンガーログの付け方</h3>
+            <p>
+            <ul>
+                <li>日時：怒りを感じた日付と時刻を書きます。日付は必須です。</li>
+                <li>タイトル：怒りを端的に表す一言を書きます。</li>
+                <li>出来事：怒りを感じた状況について簡潔に書きます。</li>
+                <li>思った事：その状況をどう思ったのかを書きます。</li>
+                <li>感情：その時どのような感情を持ったのかを書きます。</li>
+                <li>感情の強さ：どれくらいの強さの感情だったかを定量的に表します。</li>
+                <li>行動：実際にどのような行動をとったのかを書きます。</li>
+                <li>結果：行動をした結果、どのような結果になったのかを書きます。</li>
+            </ul>
+            </p>
+            <h3 id="descriptionAngerManagement">（補足）アンガーマネジメントとは？</h3>
+            <blockquote cite="https://www.angermanagement.co.jp/about">
+                <p>
+                    1970年代にアメリカで生まれたとされている怒りの感情と上手に付き合うための心理教育、心理トレーニングです。<br/>
+                    怒らないことを目的とするのではなく、怒る必要のあることは上手に怒れ、怒る必要のないことは怒らなくて済むようになることを目標としています。
+                    当初は犯罪者のための矯正プログラムなどとして活用されていましたが、時代の変遷とともに一般化されていきました。
+                </p>
+                <div style="text-align: right">
+                    引用：<a href="https://www.angermanagement.co.jp/about" target="_blank">一般社団法人 日本アンガーマネジメント協会</a>
+                </div>
+            </blockquote>
         </div>
     </div>
 </div>
