@@ -6,8 +6,7 @@
     <title>Anger Log</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
 
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.css">
-    <!--TODO: 本番ではmin版とする。-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -25,7 +24,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.js"></script> <!--TODO: 本番ではmin版とする。-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
     <script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
 
     <link rel="stylesheet" type="text/css"
@@ -34,25 +33,26 @@
     <script type="text/javascript" src="js/controller.js"></script>
 </head>
 <body ng-controller="AppController" class="container">
-<div class="p-3">
+<div class="p-1">
     <h1>💢アンガーログ</h1>
+    <hr/>
 
     <!-- タブボタン部分 -->
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a href="#tab1" class="nav-link active" data-toggle="tab">アンガーログ登録</a>
+            <a href="#tab1" class="nav-link active" data-toggle="tab">登録</a>
         </li>
         <li class="nav-item">
-            <a href="#tab2" class="nav-link" data-toggle="tab">アンガーログ一覧</a>
+            <a href="#tab2" class="nav-link" data-toggle="tab">一覧</a>
         </li>
         <li class="nav-item">
             <a href="#tab3" class="nav-link" data-toggle="tab">説明</a>
         </li>
     </ul>
     <!--タブのコンテンツ部分-->
-    <div class="tab-content p-3">
-        <div id="tab1" class="tab-pane active p-3">
-            <h2>登録</h2>
+    <div class="tab-content">
+        <div id="tab1" class="tab-pane active">
+            <h2>アンガーログ登録</h2>
             <hr/>
             <form ng-submit="submit()">
                 <div class="form-group form-row col-sm-12" data-target-input="nearest">
@@ -118,8 +118,8 @@
             </form>
         </div>
 
-        <div id="tab2" class="tab-pane p-3">
-            <h2>ログ一覧</h2>
+        <div id="tab2" class="tab-pane">
+            <h2>アンガーログ一覧</h2>
             <hr/>
             <div class="table-responsive">
                 <table border="1px" class="table table-striped text-nowrap">
@@ -149,7 +149,7 @@
             </div>
         </div>
 
-        <div id="tab3" class="tab-pane p-3">
+        <div id="tab3" class="tab-pane">
             <h2>説明</h2>
             <hr/>
             <h3>このアプリケーションについて</h3>
