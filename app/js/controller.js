@@ -1,14 +1,7 @@
 var app = angular.module('App', ['ngStorage']);
 
 app.controller('AppController', ['$scope', '$localStorage', function ($scope, $localStorage) {
-    $scope.dateTime = '';
-    $scope.title = '';
-    $scope.case = '';
-    $scope.think = '';
-    $scope.emotion = '';
-    $scope.strength = '';
-    $scope.action = '';
-    $scope.result = '';
+    clear($scope);
 
     $scope.$storage = $localStorage.$default({
         logs: []
@@ -27,5 +20,17 @@ app.controller('AppController', ['$scope', '$localStorage', function ($scope, $l
             result: $scope.result
         });
         $scope.$storage.logs = $scope.logs;
+        clear($scope);
     };
 }]);
+
+function clear($scope) {
+    $scope.dateTime = '';
+    $scope.title = '';
+    $scope.case = '';
+    $scope.think = '';
+    $scope.emotion = '';
+    $scope.strength = '';
+    $scope.action = '';
+    $scope.result = '';
+}
