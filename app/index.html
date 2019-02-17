@@ -26,8 +26,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.js"></script> <!--TODO: 本番ではmin版とする。-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script> <!--TODO: 本番ではmin版とする。-->
     <script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+
+    <script src="http://code.angularjs.org/1.2.8/angular-animate.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/3.0.0/toaster.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/3.0.0/toaster.min.js"></script>
+
     <script type="text/javascript" src="js/controller.js"></script>
 </head>
 <body ng-controller="AppController" class="container">
@@ -109,6 +115,21 @@
                 <button type="submit" class="btn btn-primary">登録</button>
             </form>
         </div>
+                <div>
+                    <!--<div ng-controller="AppController">-->
+                        <toaster-container toaster-options="{'time-out': 3000, 'close-button':true}"></toaster-container>
+                        <button class="btn btn-primary" style="margin: 150px 0 0 150px;" ng-click="pop()">Show toasts</button>
+                        <br />
+                        <button class="btn btn-danger" style="margin: 10px 0 0 150px;" ng-click="clear()">Clear toasts</button>
+                    </div>
+                    <script type="text/ng-template" id="toasterBodyTmpl.html">
+                        <p>Render a default template!</p>
+                    </script>
+
+                    <script type="text/ng-template" id="myTemplate.html">
+                        <p>Render a custom template!</p>
+                    </script>
+                <!--</div>-->
 
         <div id="tab2" class="tab-pane p-3">
             <h2>ログ一覧</h2>
