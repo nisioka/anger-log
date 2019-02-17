@@ -7,11 +7,14 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.css"> <!--TODO: 本番ではmin版とする。-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.css">
+    <!--TODO: 本番ではmin版とする。-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.js"></script> <!--TODO: 本番ではmin版とする。-->
     <script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
@@ -39,31 +42,45 @@
             <h2>登録</h2>
             <hr/>
             <form ng-submit="submit()">
-                <div class="form-group">
-                    <label for="date">日時</label>
-                    <input type="text" class="form-control" id="date" ng-model="date">
-                    <input type="text" class="form-control" id="time" ng-model="time">
+                <div class="form-group form-row col-sm-12">
+                    <label for="date" class="col-sm-2">日時</label>
+                    <input type="text" id="date" ng-model="date" class="form-control col-sm-4" required>
+                    <input type="text" id="time" ng-model="time" class="form-control col-sm-4">
+                </div>
 
-                    <label for="title">タイトル</label>
-                    <input type="text" class="form-control" id="title" ng-model="title">
+                <div class="form-group form-row col-sm-12">
+                    <label for="title" class="col-sm-2">タイトル</label>
+                    <input type="text" id="title" ng-model="title" class="form-control col-sm-8" required>
+                </div>
 
-                    <label for="case">出来事</label>
-                    <input type="text" class="form-control" id="case" ng-model="case">
+                <div class="form-group form-row col-sm-12">
+                    <label for="case" class="col-sm-2">出来事</label>
+                    <textarea id="case" ng-model="case" class="form-control col-sm-8"></textarea>
+                </div>
 
-                    <label for="think">思った事</label>
-                    <input type="text" class="form-control" id="think" ng-model="think">
+                <div class="form-group form-row col-sm-12">
+                    <label for="think" class="col-sm-2">思った事</label>
+                    <input type="text" id="think" ng-model="think" class="form-control col-sm-8">
+                </div>
 
-                    <label for="emotion">感情</label>
-                    <input type="text" class="form-control" id="emotion" ng-model="emotion">
+                <div class="form-group form-row col-sm-12">
+                    <label for="emotion" class="col-sm-2">感情</label>
+                    <input type="text" id="emotion" ng-model="emotion" class="form-control col-sm-8">
+                </div>
 
-                    <label for="strength">感情の強さ</label>
-                    <input type="text" class="form-control" id="strength" ng-model="strength">
+                <div class="form-group form-row col-sm-12">
+                    <label for="strength" class="col-sm-2">感情の強さ</label>
+                    <input type="number" id="strength" ng-model="strength" class="form-control col-sm-8" min="0" max="10">
+                </div>
 
-                    <label for="action">行動</label>
-                    <input type="text" class="form-control" id="action" ng-model="action">
+                <div class="form-group form-row col-sm-12">
+                    <label for="action" class="col-sm-2">行動</label>
+                    <input type="text" id="action" ng-model="action" class="form-control col-sm-8">
+                </div>
 
-                    <label for="result">結果</label>
-                    <input type="text" class="form-control" id="result" ng-model="result">
+                <div class="form-group form-row col-sm-12">
+                    <label for="result" class="col-sm-2">結果</label>
+                    <input type="text" id="result" ng-model="result" class="form-control col-sm-8">
                 </div>
                 <button type="submit" class="btn btn-primary">登録</button>
             </form>
