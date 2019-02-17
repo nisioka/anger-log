@@ -16,6 +16,16 @@
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css"/>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.js"></script> <!--TODO: 本番ではmin版とする。-->
     <script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
     <script type="text/javascript" src="js/controller.js"></script>
@@ -42,10 +52,23 @@
             <h2>登録</h2>
             <hr/>
             <form ng-submit="submit()">
-                <div class="form-group form-row col-sm-12">
-                    <label for="date" class="col-sm-2">日時</label>
-                    <input type="text" id="date" ng-model="date" class="form-control col-sm-4" required>
-                    <input type="text" id="time" ng-model="time" class="form-control col-sm-4">
+                <div class="form-group form-row col-sm-12" data-target-input="nearest">
+                    <label for="dateTime" class="col-sm-2">日時</label>
+                    <input type="text" id="dateTime" ng-model="dateTime"
+                           class="form-control datetimepicker-input col-sm-8" data-toggle="datetimepicker"
+                           data-target="#dateTime" required>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#dateTime').datetimepicker({
+                                locale: 'ja',
+                                format: 'YYYY/MM/DD hh:mm',
+                                icons: {
+                                    time: 'far fa-clock',
+                                    date: 'far fa-calendar'
+                                }
+                            });
+                        });
+                    </script>
                 </div>
 
                 <div class="form-group form-row col-sm-12">
@@ -70,7 +93,8 @@
 
                 <div class="form-group form-row col-sm-12">
                     <label for="strength" class="col-sm-2">感情の強さ</label>
-                    <input type="number" id="strength" ng-model="strength" class="form-control col-sm-8" min="0" max="10">
+                    <input type="number" id="strength" ng-model="strength" class="form-control col-sm-8" min="0"
+                           max="10">
                 </div>
 
                 <div class="form-group form-row col-sm-12">
@@ -89,31 +113,33 @@
         <div id="tab2" class="tab-pane p-3">
             <h2>ログ一覧</h2>
             <hr/>
-            <table border="1px" class="table table-striped">
-                <thead class="thead-dark">
-                <tr>
-                    <th>日時</th>
-                    <th>タイトル</th>
-                    <th>出来事</th>
-                    <th>思った事</th>
-                    <th>感情</th>
-                    <th>感情の強さ</th>
-                    <th>行動</th>
-                    <th>結果</th>
-                </tr>
-                </thead>
-                <!-- 繰り返したいタグに対してng-repeatを使う -->
-                <tr ng-repeat="log in logs">
-                    <td>{{log.date}}&nbsp;{{log.time}}</td>
-                    <td>{{log.title}}</td>
-                    <td>{{log.case}}</td>
-                    <td>{{log.think}}</td>
-                    <td>{{log.emotion}}</td>
-                    <td>{{log.strength}}</td>
-                    <td>{{log.action}}</td>
-                    <td>{{log.result}}</td>
-                </tr>
-            </table>
+            <div class="table-responsive">
+                <table border="1px" class="table table-striped text-nowrap">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>日時</th>
+                        <th>タイトル</th>
+                        <th>出来事</th>
+                        <th>思った事</th>
+                        <th>感情</th>
+                        <th>感情の強さ</th>
+                        <th>行動</th>
+                        <th>結果</th>
+                    </tr>
+                    </thead>
+                    <!-- 繰り返したいタグに対してng-repeatを使う -->
+                    <tr ng-repeat="log in logs">
+                        <td>{{log.dateTime}}</td>
+                        <td>{{log.title}}</td>
+                        <td>{{log.case}}</td>
+                        <td>{{log.think}}</td>
+                        <td>{{log.emotion}}</td>
+                        <td>{{log.strength}}</td>
+                        <td>{{log.action}}</td>
+                        <td>{{log.result}}</td>
+                    </tr>
+                </table>
+            </div>
         </div>
 
         <div id="tab3" class="tab-pane p-3">
