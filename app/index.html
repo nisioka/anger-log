@@ -1,67 +1,198 @@
 <!DOCTYPE html>
-<html lang="en" ng-app='App'>
+<html lang="ja" ng-app='App'>
 <head>
     <meta charset="UTF-8">
-    <title>Anger Log</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Anger Log</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css"/>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
     <script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.5/css/star-rating.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.5/js/star-rating.min.js"></script>
     <script type="text/javascript" src="js/controller.js"></script>
 </head>
 <body ng-controller="AppController" class="container">
-<div>
+<div class="p-3">
+    <h1>💢アンガーログ</h1>
 
-    <div>
-        <h1>登録</h1>
-        <form ng-submit="submit()">
-            <div class="form-group">
-                <label for="date">日時</label>
-                <input type="text" class="form-control" id="date" ng-model="date">
-                <input type="text" class="form-control" id="time" ng-model="time">
-
-                <label for="title">タイトル</label>
-                <input type="text" class="form-control" id="title" ng-model="title">
-
-                <label for="case">出来事</label>
-                <input type="text" class="form-control" id="case" ng-model="case">
-
-                <label for="think">思った事</label>
-                <input type="text" class="form-control" id="think" ng-model="think">
-
-                <label for="emotion">感情</label>
-                <input type="text" class="form-control" id="emotion" ng-model="emotion">
-
-                <label for="strength">感情の強さ</label>
-                <input type="text" class="form-control" id="strength" ng-model="strength">
-
-                <label for="action">行動</label>
-                <input type="text" class="form-control" id="action" ng-model="action">
-
-                <label for="result">結果</label>
-                <input type="text" class="form-control" id="result" ng-model="result">
-            </div>
-            <button type="submit" class="btn btn-primary">登録</button>
-        </form>
-    </div>
-
-    <hr>
-
-    <div>
-        <h1>ログ一覧</h1>
-        <ul>
-            <!-- 繰り返したいタグに対してng-repeatを使う -->
-            <li style="padding: 5px" ng-repeat="log in logs">
-                <div>
-                    <!-- ng-repeat内のuserをタグで囲まれた範囲内で使うことができます -->
-                    <span>{{log.date}} {{log.time}}</span><span>{{log.title}}</span>
+    <!-- タブボタン部分 -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a href="#tab1" class="nav-link active" data-toggle="tab">アンガーログ登録</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tab2" class="nav-link" data-toggle="tab">アンガーログ一覧</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tab3" class="nav-link" data-toggle="tab">説明</a>
+        </li>
+    </ul>
+    <!--タブのコンテンツ部分-->
+    <div class="tab-content p-3">
+        <div id="tab1" class="tab-pane active p-3">
+            <h2>登録</h2>
+            <hr/>
+            <form ng-submit="submit()">
+                <div class="form-group form-row col-sm-12" data-target-input="nearest">
+                    <label for="dateTime" class="col-sm-2">日時</label>
+                    <input type="text" id="dateTime" ng-model="dateTime"
+                           class="form-control datetimepicker-input col-sm-8" data-toggle="datetimepicker"
+                           data-target="#dateTime" required>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#dateTime').datetimepicker({
+                                locale: 'ja',
+                                format: 'YYYY/MM/DD hh:mm',
+                                icons: {
+                                    time: 'far fa-clock',
+                                    date: 'far fa-calendar'
+                                }
+                            });
+                        });
+                    </script>
                 </div>
-            </li>
-        </ul>
+
+                <div class="form-group form-row col-sm-12">
+                    <label for="title" class="col-sm-2">タイトル</label>
+                    <input type="text" id="title" ng-model="title" class="form-control col-sm-8" required>
+                </div>
+
+                <div class="form-group form-row col-sm-12">
+                    <label for="case" class="col-sm-2">出来事</label>
+                    <textarea id="case" ng-model="case" class="form-control col-sm-8"></textarea>
+                </div>
+
+                <div class="form-group form-row col-sm-12">
+                    <label for="think" class="col-sm-2">思った事</label>
+                    <input type="text" id="think" ng-model="think" class="form-control col-sm-8">
+                </div>
+
+                <div class="form-group form-row col-sm-12">
+                    <label for="emotion" class="col-sm-2">感情</label>
+                    <input type="text" id="emotion" ng-model="emotion" class="form-control col-sm-8">
+                </div>
+
+                <div class="form-group form-row col-sm-12">
+                    <label for="strength" class="col-sm-2">感情の強さ</label>
+                    <input type="number" id="strength" ng-model="strength" data-theme="krajee-fa" data-step="1"
+                           data-size="sm" data-show-clear="false" data-star-captions=""
+                           data-default-caption="angry level {rating}."
+                           data-star-caption-classes='{"1": "badge badge-success","2": "badge badge-primary","3": "badge badge-info","4": "badge badge-warning","5": "badge badge-danger"}'
+                           data-filled-star="<i class='fas fa-angry'></i>"
+                           data-empty-star="<i class='far fa-angry'></i>"
+                           class="form-control col-sm-8 rating rating-loading">
+                </div>
+
+                <div class="form-group form-row col-sm-12">
+                    <label for="action" class="col-sm-2">行動</label>
+                    <input type="text" id="action" ng-model="action" class="form-control col-sm-8">
+                </div>
+
+                <div class="form-group form-row col-sm-12">
+                    <label for="result" class="col-sm-2">結果</label>
+                    <input type="text" id="result" ng-model="result" class="form-control col-sm-8">
+                </div>
+                <button type="submit" class="btn btn-primary">登録</button>
+            </form>
+        </div>
+
+        <div id="tab2" class="tab-pane p-3">
+            <h2>ログ一覧</h2>
+            <hr/>
+            <div class="table-responsive">
+                <table border="1px" class="table table-striped text-nowrap">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>日時</th>
+                        <th>タイトル</th>
+                        <th>出来事</th>
+                        <th>思った事</th>
+                        <th>感情</th>
+                        <th>感情の強さ</th>
+                        <th>行動</th>
+                        <th>結果</th>
+                    </tr>
+                    </thead>
+                    <tr ng-repeat="log in logs">
+                        <td>{{log.dateTime}}</td>
+                        <td>{{log.title}}</td>
+                        <td>{{log.case}}</td>
+                        <td>{{log.think}}</td>
+                        <td>{{log.emotion}}</td>
+                        <td>angry level <strong>{{log.strength}}</strong>.</td>
+                        <td>{{log.action}}</td>
+                        <td>{{log.result}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-pane p-3">
+            <h2>説明</h2>
+            <hr/>
+            <h3>このアプリケーションについて</h3>
+            <p>
+                なるべく手軽にを意識して、作成しました。<br/>
+                初期表示さえできてしまえば、後はオフラインのみで使用することができます。<br/>
+                全てのデータはご覧になってるブラウザ内に保存され、秘密が漏れるなどの心配がありません。<br/>
+                <!--リリース情報や、技術的な詳しい内容については下記ブログに記載します。<br/>-->
+                <!--お問い合わせやご要望など、お気軽にコメントください。<br/>-->
+                <!--<a href="https://sun0range.com" target="_blank">分かりやすい技術ブログ</a>-->
+            </p>
+            <h3>アンガーログとは？</h3>
+            <p>
+                アンガーログとは、<a href="#descriptionAngerManagement">アンガーマネジメント(下記参照)</a>における怒りをコントロールする技術の一つの手段です。<br/>
+                怒りを生み出してしまう仕組みを修正するために、まず自分自身の怒りというものを客観的に知るツールとして日々の怒りをこのアンガーログとして記録します。
+                これによって、自分が物事をどのように認識しているのか、どのように怒りを感じているのか、どのように行動したのかを分析することが出来るようになります。
+            </p>
+            <h3>アンガーログの付け方</h3>
+            <p>
+            <ul>
+                <li>日時：怒りを感じた日付と時刻を書きます。必須項目です。</li>
+                <li>タイトル：怒りを端的に表す一言を書きます。必須項目です。</li>
+                <li>出来事：怒りを感じた状況について簡潔に書きます。</li>
+                <li>思った事：その状況をどう思ったのかを書きます。</li>
+                <li>感情：その時どのような感情を持ったのかを書きます。</li>
+                <li>感情の強さ：どれくらいの強さの感情だったかを定量的に表します。</li>
+                <li>行動：実際にどのような行動をとったのかを書きます。</li>
+                <li>結果：行動をした結果、どのような結果になったのかを書きます。</li>
+            </ul>
+            </p>
+            <h3 id="descriptionAngerManagement">（補足）アンガーマネジメントとは？</h3>
+            <blockquote cite="https://www.angermanagement.co.jp/about">
+                <p>
+                    1970年代にアメリカで生まれたとされている怒りの感情と上手に付き合うための心理教育、心理トレーニングです。<br/>
+                    怒らないことを目的とするのではなく、怒る必要のあることは上手に怒れ、怒る必要のないことは怒らなくて済むようになることを目標としています。
+                    当初は犯罪者のための矯正プログラムなどとして活用されていましたが、時代の変遷とともに一般化されていきました。
+                </p>
+                <div style="text-align: right">
+                    引用：<a href="https://www.angermanagement.co.jp/about" target="_blank">一般社団法人 日本アンガーマネジメント協会</a>
+                </div>
+            </blockquote>
+        </div>
     </div>
 </div>
-<span>ver.0.1.0</span>
+<div style="text-align: right"><span>ver.1.0.0</span></div>
 </body>
 </html>
