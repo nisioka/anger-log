@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" ng-app='App'>
+<html lang="ja" ng-app='App'>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Anger Log</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.css">
     <!--TODO: 本番ではmin版とする。-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -28,6 +27,10 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.js"></script> <!--TODO: 本番ではmin版とする。-->
     <script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.5/css/star-rating.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.5/js/star-rating.min.js"></script>
     <script type="text/javascript" src="js/controller.js"></script>
 </head>
 <body ng-controller="AppController" class="container">
@@ -93,8 +96,13 @@
 
                 <div class="form-group form-row col-sm-12">
                     <label for="strength" class="col-sm-2">感情の強さ</label>
-                    <input type="number" id="strength" ng-model="strength" class="form-control col-sm-8" min="0"
-                           max="10">
+                    <input type="number" id="strength" ng-model="strength" data-theme="krajee-fa" data-step="1"
+                           data-size="sm" data-show-clear="false" data-star-captions=""
+                           data-default-caption="angry level {rating}."
+                           data-star-caption-classes='{"1": "badge badge-success","2": "badge badge-primary","3": "badge badge-info","4": "badge badge-warning","5": "badge badge-danger"}'
+                           data-filled-star="<i class='fas fa-angry'></i>"
+                           data-empty-star="<i class='far fa-angry'></i>"
+                           class="form-control col-sm-8 rating rating-loading">
                 </div>
 
                 <div class="form-group form-row col-sm-12">
@@ -127,14 +135,13 @@
                         <th>結果</th>
                     </tr>
                     </thead>
-                    <!-- 繰り返したいタグに対してng-repeatを使う -->
                     <tr ng-repeat="log in logs">
                         <td>{{log.dateTime}}</td>
                         <td>{{log.title}}</td>
                         <td>{{log.case}}</td>
                         <td>{{log.think}}</td>
                         <td>{{log.emotion}}</td>
-                        <td>{{log.strength}}</td>
+                        <td>angry level <strong>{{log.strength}}</strong>.</td>
                         <td>{{log.action}}</td>
                         <td>{{log.result}}</td>
                     </tr>
@@ -150,9 +157,9 @@
                 なるべく手軽にを意識して、作成しました。<br/>
                 初期表示さえできてしまえば、後はオフラインのみで使用することができます。<br/>
                 全てのデータはご覧になってるブラウザ内に保存され、秘密が漏れるなどの心配がありません。<br/>
-                リリース情報や、技術的な詳しい内容については下記ブログに記載します。<br/>
-                お問い合わせやご要望など、お気軽にコメントください。<br/>
-                <a href="https://sun0range.com" target="_blank">分かりやすい技術ブログ</a>
+                <!--リリース情報や、技術的な詳しい内容については下記ブログに記載します。<br/>-->
+                <!--お問い合わせやご要望など、お気軽にコメントください。<br/>-->
+                <!--<a href="https://sun0range.com" target="_blank">分かりやすい技術ブログ</a>-->
             </p>
             <h3>アンガーログとは？</h3>
             <p>
